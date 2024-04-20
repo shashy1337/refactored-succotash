@@ -1,0 +1,26 @@
+server:
+    port: 8082
+    servlet:
+        context-path: /api/v1/
+
+spring:
+    application:
+        name: OrderRestApi
+
+    liquibase:
+        enabled: true
+
+    datasource:
+        url: jdbc:postgresql://localhost:5432/order_db
+        password: postgrespw
+        username: postgres
+        driver-class-name: org.postgresql.Driver
+
+    jpa:
+        open-in-view: true
+        generate-ddl: false
+        show-sql: true
+
+jwt:
+    secret: QNsgkaQlOLZcgaQL0IX5XHK84M+g7V2sDlVZDdAeR4s=
+    duration: 15m

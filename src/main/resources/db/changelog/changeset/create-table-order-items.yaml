@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-order-items
+      author: admin
+      changes:
+        - createTable:
+            tableName: order_items
+            columns:
+              - column:
+                  name: order_id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: product_id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: quantity
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: unit_price
+                  type: decimal
+                  constraints:
+                    nullable: false

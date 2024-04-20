@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-orders-table
+      author: Igor Vasiltsev
+      changes:
+        - createTable:
+            tableName: orders
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: user_id
+                  type: bigserial
+              - column:
+                  name: total_price
+                  type: decimal
+                  defaultValue: 0.0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(16)
+                  defaultValue: CREATED
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: false

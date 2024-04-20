@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-audit-log-table
+      author: Igor Vasiltsev
+      changes:
+        - createTable:
+            tableName: audit_log
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: user_id
+                  type: bigserial
+              - column:
+                  name: action
+                  type: varchar(16)
+                  defaultValue: DEFAULT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(128)
+              - column:
+                  name: action_timestamp
+                  type: timestamp
+                  constraints:
+                    nullable: false
