@@ -1,10 +1,11 @@
 package ru.shashy.orderrestapi.util;
 
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -45,15 +46,11 @@ public class JwtUtil {
     }
 
     public String getSubject(String token) {
-        try {
-            return getAllClaimsFromToken(token).getSubject();
-        } catch (ExpiredJwtException | SignatureException e) {
-            log.debug("Token expired or signature not verified");
-        }
-        throw new BadCredentialsException("Invalid JWT");
+        return getAllClaimsFromToken(token).getSubject();
     }
 
-    private Claims getAllClaimsFromToken(String token) {
+
+    public Claims getAllClaimsFromToken(String token) {
         return Jwts.parser()
                 .setSigningKey(secret)
                 .parseClaimsJws(token)

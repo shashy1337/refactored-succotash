@@ -19,13 +19,14 @@ public class AuthController {
     public AppResponse register(
             @RequestBody RegistrationDto registrationDto
     ){
-        return authService.register(registrationDto);
+        authService.register(registrationDto);
+        return new AppResponse("Registered Successfully");
     }
 
     @PostMapping("/auth")
     public AppResponse auth(
             @RequestBody AuthDto authDto
-    ){
-        return authService.authenticate(authDto);
+    ) {
+        return new AppResponse(authService.authenticate(authDto));
     }
 }

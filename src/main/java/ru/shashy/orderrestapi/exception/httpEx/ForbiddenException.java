@@ -1,15 +1,15 @@
-package ru.shashy.orderrestapi.exception;
+package ru.shashy.orderrestapi.exception.httpEx;
 
 import ru.shashy.orderrestapi.exception.base.AbstractExceptionHttpHandler;
 
 import java.io.Serial;
 
-public class BadRequestException extends AbstractExceptionHttpHandler {
+public class ForbiddenException extends AbstractExceptionHttpHandler {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
-    public BadRequestException(String message) {
+    public ForbiddenException(String message) {
         super(message);
     }
 }

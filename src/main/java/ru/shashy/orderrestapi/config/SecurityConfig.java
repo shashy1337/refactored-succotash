@@ -1,5 +1,6 @@
 package ru.shashy.orderrestapi.config;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
@@ -72,15 +73,18 @@ public class SecurityConfig {
 
     public AuthenticationEntryPoint unauthorizedEntryPoint() {
         return (request, response, authException) -> {
-            AppError appError = new AppError(HttpStatus.UNAUTHORIZED.value(), "Unauthorized");
-            var mapper = new ObjectMapper();
-            JavaTimeModule javaTimeModule = new JavaTimeModule();
-            javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ISO_DATE_TIME));
-            mapper.registerModule(javaTimeModule);
-            String jsonErrorResponse = mapper.writeValueAsString(appError);
             response.setContentType("application/json");
             response.setStatus(HttpStatus.UNAUTHORIZED.value());
-            response.getWriter().write(jsonErrorResponse);
+            response.getWriter().write(createUnauthorizedJson(HttpStatus.UNAUTHORIZED.value()));
         };
+    }
+
+    private String createUnauthorizedJson(int status) throws JsonProcessingException {
+        AppError appError = new AppError(status, "Unauthorized");
+        var mapper = new ObjectMapper();
+        JavaTimeModule javaTimeModule = new JavaTimeModule();
+        javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ISO_DATE_TIME));
+        mapper.registerModule(javaTimeModule);
+        return mapper.writeValueAsString(appError);
     }
 }
