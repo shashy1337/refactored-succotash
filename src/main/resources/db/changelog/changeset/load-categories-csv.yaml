@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: load-categories-csv.yaml
+      author: admin
+      changes:
+        - loadData:
+            tableName: categories
+            file: db/csv/product_categories.csv

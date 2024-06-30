@@ -1,16 +1,14 @@
 package ru.shashy.orderrestapi.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import ru.shashy.orderrestapi.domain.base.BaseEntity;
 import ru.shashy.orderrestapi.domain.base.TimestampCreatedUpdated;
 import ru.shashy.orderrestapi.domain.enums.OrderStatus;
 
 @Getter
 @Setter
+@Builder
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor

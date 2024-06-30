@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.shashy.orderrestapi.domain.base.TimestampCreatedUpdated;
 import ru.shashy.orderrestapi.domain.entity.User;
@@ -25,9 +24,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return findByUsername(username);
+    }
+
+    @Override
+    public User findByUsername(String username) {
         var user = userRepository.findByUsername(username);
         return user.stream()
-                .findAny()
+                .findFirst()
                 .orElseThrow(() -> new NotFoundException("User not found"));
     }
 
@@ -37,6 +41,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public User create(RegistrationDto registrationDto) {
         var timeStamp = new TimestampCreatedUpdated(LocalDateTime.now(), LocalDateTime.now());
         return User.builder()

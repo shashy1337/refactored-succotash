@@ -1,8 +1,10 @@
 package ru.shashy.orderrestapi.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import ru.shashy.orderrestapi.domain.base.BaseEntity;
 import ru.shashy.orderrestapi.domain.base.TimestampCreatedUpdated;
 
@@ -23,6 +25,7 @@ public class Products extends BaseEntity<Long> {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
+    @JsonIgnore
     private Categories categoryId;
 
     @Column(name = "quantity", nullable = false)

@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: load-products-csv.yaml
+      author: Igor Vasiltsev
+      changes:
+        - loadData:
+            tableName: products
+            file: db/csv/products_mock.csv

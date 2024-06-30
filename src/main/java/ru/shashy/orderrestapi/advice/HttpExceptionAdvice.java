@@ -30,4 +30,10 @@ public class HttpExceptionAdvice {
         return new AppError(HttpStatus.NOT_FOUND.value(), e.getMessage());
     }
 
+    @ExceptionHandler(NullPointerException.class)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public AppError handleNullPoint(NullPointerException e) {
+        return new AppError(HttpStatus.NO_CONTENT.value(), e.getMessage());
+    }
+
 }

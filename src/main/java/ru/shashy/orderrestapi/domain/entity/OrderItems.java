@@ -1,10 +1,7 @@
 package ru.shashy.orderrestapi.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import ru.shashy.orderrestapi.domain.base.BaseEntity;
 import ru.shashy.orderrestapi.domain.keys.OrderAndProductId;
 
@@ -13,8 +10,12 @@ import ru.shashy.orderrestapi.domain.keys.OrderAndProductId;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "order_items")
-public class OrderItems extends BaseEntity<OrderAndProductId> {
+public class OrderItems {
+
+    @EmbeddedId
+    private OrderAndProductId id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("orderId")
@@ -32,6 +33,6 @@ public class OrderItems extends BaseEntity<OrderAndProductId> {
 
     @Basic
     @Column(name = "unit_price", nullable = false)
-    private int unitPrice;
+    private double unitPrice;
 
 }

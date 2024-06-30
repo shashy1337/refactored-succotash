@@ -40,6 +40,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         request -> request
                                 .requestMatchers("/ok").authenticated()
+                                .requestMatchers("/basket/**").authenticated()
                                 .anyRequest().permitAll()
                 )
                 .authenticationProvider(authenticationProvider())

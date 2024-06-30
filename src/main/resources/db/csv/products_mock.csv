@@ -1,0 +1,11 @@
+id,name,description,price,category_id,quantity,created_at,updated_at
+1,Smartphone,Latest model smartphone with high-end specs,699.99,1,50,2024-06-01 10:00:00,2024-06-15 15:30:00
+2,Laptop,High performance laptop for gaming and work,1299.99,1,30,2024-06-02 11:15:00,2024-06-16 16:45:00
+3,Fiction Book,Bestselling fiction novel,19.99,2,100,2024-06-03 12:30:00,2024-06-17 17:00:00
+4,T-Shirt,Cotton t-shirt in various sizes,15.99,3,200,2024-06-04 13:45:00,2024-06-18 18:15:00
+5,Blender,High-speed kitchen blender,89.99,1,40,2024-06-05 14:00:00,2024-06-19 19:30:00
+6,Face Cream,Moisturizing face cream for all skin types,29.99,3,150,2024-06-06 15:15:00,2024-06-20 20:45:00
+7,Tent,4-person camping tent,149.99,3,20,2024-06-07 16:30:00,2024-06-21 21:00:00
+8,Action Figure,Popular superhero action figure,24.99,1,75,2024-06-08 17:45:00,2024-06-22 22:15:00
+9,Car Charger,Fast charging car adapter,19.99,1,100,2024-06-09 18:00:00,2024-06-23 23:30:00
+10,Guitar,Acoustic guitar with carrying case,299.99,1,10,2024-06-10 19:15:00,2024-06-24 08:00:00

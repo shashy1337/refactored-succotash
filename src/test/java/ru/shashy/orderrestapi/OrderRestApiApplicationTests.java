@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import ru.shashy.orderrestapi.domain.entity.Products;
+import ru.shashy.orderrestapi.repository.ProductsRepository;
 import ru.shashy.orderrestapi.util.JwtUtil;
 
 import java.math.BigInteger;
@@ -19,6 +21,9 @@ class OrderRestApiApplicationTests {
 
     @Autowired
     private JwtUtil jwtUtil;
+
+    @Autowired
+    private ProductsRepository productsRepository;
 
     @Test
     void contextLoads() {
@@ -76,6 +81,13 @@ class OrderRestApiApplicationTests {
         });
 
         log.info(s);
+    }
+
+    @Test
+    void testHashcodeAndEquals() {
+        Optional<Products> p1 = productsRepository.findById(1L);
+        Optional<Products> p2 = productsRepository.findById(1L);
+        System.out.println(p1.equals(p2));
     }
 
 
